@@ -1,4 +1,4 @@
-# Sistema pra Loja de Construcao
+# Sistema pra Loja de Construção
 
 ## Dependências
 
