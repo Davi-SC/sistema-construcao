@@ -1,4 +1,6 @@
-# Sistema pra Loja de Construção
+# Sistema de estoque
+
+Trabalho da matéria de Programação Web 2. Curso de Análise e Desenvolvimento de Sistemas - IFMA
 
 ## Dependências
 

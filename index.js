@@ -7,11 +7,11 @@ import Handlebars from "handlebars";
 import bodyParser from "body-parser";
 import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
 
-//Pasta estatica
+// Pasta estatica
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.use(express.static(path.join(__dirname, "public")));
 
-//configuração da visão
+// visão
 app.engine(
   "handlebars",
   handlebars.engine({
@@ -24,12 +24,40 @@ app.set("view engine", "handlebars");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//Configuração das rotas
-
+// Rotas
 app.get("/", function (req, res) {
-  res.render("admin/index");
+  var aluno = {
+    nome: "Fulaninho",
+    nota: 7.5,
+  };
+
+  res.render("admin/index", { aluno });
 });
 
+app.get("/contato", function (req, res) {
+  res.render("admin/contato");
+});
+
+app.get("/cadastro", function (req, res) {
+  res.render("produto/cadastro");
+});
+
+app.get("/produto", function (req, res) {
+  res.render("produto/index");
+});
+
+app.post("/cadastro", function (req, res) {
+  var produto = {
+    descricao: req.body.descricao,
+    estoque: req.body.estoque,
+    preco: req.body.preco,
+    status: 1,
+    foto: "/img/semfoto.png",
+  };
+  res.render("produto/detalhe", { produto });
+});
+
+// Servidor
 app.listen(3921, () =>
-  console.log("Servidor rodando em http://localhost:3921")
+  console.log("Servidor truando em http://localhost:3921")
 );

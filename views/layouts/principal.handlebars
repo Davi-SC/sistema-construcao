@@ -1,101 +1,40 @@
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistema</title>
-    <link rel="stylesheet" href="/css/bootstrap.css" />
-  </head>
-  <body>
-    {{! navbar }}
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-      <div class="container">
-        {{! logo }}
-        <a class="navbar-brand fs-2" href="#">Fulaninho Construções</a>
-        {{! toggle btn }}
-        <button
-          class="navbar-toggler shadow-none border-0"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar"
-        >
-          <span class="navbar-toggler-icon"></span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema</title>
+  <link rel="stylesheet" href="/css/bootstrap.css" />
+</head>
+
+<body>
+
+  <nav class="navbar bg-success">
+    <div class="container-fluid">
+      <span class="navbar-brand text-white mb-0 h1">
+        <a href="/" class="text-decoration-none text-white">IFMA Construções</a>
+      </span>
+      <div class="dropdown">
+        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="fa-solid fa-user"></i>
+          Usuário
         </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="#"><i class="fa-regular fa-id-card"></i> Meus Dados</a></li>
+          <li><a class="dropdown-item" href="#"><i class="fa-solid fa-key"></i> Alterar Senha</a></li>
 
-        {{! sidebar }}
-        <div
-          class="sidebar offcanvas offcanvas-start"
-          tabindex="-1"
-          id="offcanvasNavbar"
-          aria-labelledby="offcanvasNavbarLabel"
-        >
-          {{! sidebar header }}
-          <div class="offcanvas-header text-black border-button">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Fulaninho
-              Construções</h5>
-            <button
-              type="button"
-              class="btn-close shadow-none"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          {{! sidebar body }}
-          <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
-            <ul
-              class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3"
-            >
-              <li class="nav-item mx-2">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="#about">About</a>
-              </li>
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="#about">Services</a>
-              </li>
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="#about">Contact</a>
-              </li>
-              {{! login/sign up }}
-            </ul>
-            <div
-              class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3"
-            >
-              <a href="#login" class="text-black">Login</a>
-              <a
-                href="#signup"
-                class="text-decoration-none px-3 py-1 bg-primary rounded-4 text-black"
-                style="background-color: aqua;"
-              >Sign up</a>
-            </div>
-          </div>
-        </div>
+          <div class="dropdown-divider"></div>
+          <li>
+            <a class="dropdown-item" href="#"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
+          </li>
+        </ul>
       </div>
-    </nav>
-    {{! <nav class="navbar bg-success">
-        <div class="container-fluid p-2">
-            <span class="navbar-brand text-white mb-0 h1">
-                <a href="/" class="text-decoration-none text-white">Construções</a>
-            </span>
-            <div class="dropdown">
-                <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-user"></i> Usuário
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#"><i class="fa-regular fa-id-card"></i> Meus Dados</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-key"></i> Alterar Senha</a></li>
+    </div>
+  </nav>
 
-                    <div class="dropdown-divider"></div>
-                    <li>
-                        <a class="dropdown-item" href="#" ><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav> }}
+  {{{body}}}
+  <script src="/js/bootstrap.bundle.js"></script>
+</body>
 
-    {{{body}}}
-    <script src="/js/bootstrap.bundle.js"></script>
-  </body>
 </html>
