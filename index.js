@@ -43,7 +43,69 @@ app.get("/cadastro", function (req, res) {
 });
 
 app.get("/produto", function (req, res) {
-  res.render("produto/index");
+  const produtos = [
+    {
+      id: 22,
+      descricao: "mouse",
+      preco: 22,
+      estoque: 20
+    },
+    {
+      id: 21,
+      descricao: "mouse",
+      preco: 2,
+      estoque: 20
+    },
+    {
+      id: 22,
+      descricao: "mouse",
+      preco: 22,
+      estoque: 20
+    },
+    {
+      id: 22,
+      descricao: "mouse",
+      preco: 22,
+      estoque: 20
+    },
+    {
+      id: 22,
+      descricao: "mouse",
+      preco: 22,
+      estoque: 20
+    },
+    {
+      id: 22,
+      descricao: "mouse",
+      preco: 22,
+      estoque: 20
+    },
+    {
+      id: 22,
+      descricao: "mouse",
+      preco: 22,
+      estoque: 20
+    },
+    {
+      id: 22,
+      descricao: "mouse",
+      preco: 22,
+      estoque: 20
+    },
+    {
+      id: 22,
+      descricao: "mouse",
+      preco: 22,
+      estoque: 20
+    },
+    {
+      id: 22,
+      descricao: "mouse",
+      preco: 22,
+      estoque: 20
+    }
+  ];
+  res.render("produto/lista",{produtos:produtos});
 });
 
 app.post("/cadastro", function (req, res) {
