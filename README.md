@@ -10,6 +10,8 @@ Trabalho da matéria de Programação Web 2. Curso de Análise e Desenvolvimento
 - express-handlebars: (v8.0.1)
 - handlebars: (v4.7.8)
 - nodemon: (v3.1.9)
+- sequelize
+- mysql2
 
 ## Licença
 

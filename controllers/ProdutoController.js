@@ -1,6 +1,9 @@
+import Produto from "../models/produto";
+
 class ProdutoController {
-  lista = function (req, res) {
-    res.render("produto/lista");
+  index = async function (req, res) {
+    const produtos = await Produto.findAll();
+    res.render("produto/lista", { produtos: produtos }); // O controller manda para a visão os produtos
   };
 }
 

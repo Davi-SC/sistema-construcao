@@ -22,6 +22,17 @@
             <th class="col-2">ESTOQUE</th>
 
         </tr>
+
+        {{#each Produtos}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{descricao}}</td>
+                <td>{{preco}}</td>
+                <td>{{estoque}}</td>
+                <td>{{id}}</td>
+            </tr>
+        {{/each}}
+        {{!-- 
         <tr>
             <td>22</td>
             <td>Adaptador VGA para HDMI</td>
@@ -98,7 +109,7 @@
             <td>1462.52</td>
             <td>90</td>
 
-        </tr>
+        </tr> --}}
 
 
 
