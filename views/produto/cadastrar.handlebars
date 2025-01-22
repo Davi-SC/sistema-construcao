@@ -1,0 +1,15 @@
+<div class="w-50 m-auto">
+    <form method="post" action="/produto/salvar">
+        <fieldset>
+            <legend>CADASTRO DE PRODUTO</legend>
+            <label>DESCRIÇÃO</label>
+            <input type="text" name="descricao" required class="form-control">
+            {{!-- todos os campos precisam de um name, para enviar para o banco --}}
+            <label>PREÇO</label>
+            <input type="text" name="preco" required class="form-control">
+            <label>ESTOQUE</label>
+            <input type="text" name="estoque" required class="form-control">
+            <button type="submit" class=" btn btn-sucess mt-2">Salvar</button>
+        </fieldset>
+    </form>
+</div>
