@@ -30,16 +30,18 @@ app.get("/", function (req, res) {
     nome: "Fulaninho",
     nota: 7.5,
   };
-  
+
   res.render("admin/index", { aluno });
 });
 
 // agora usando o router, mantemos a rota principal
 
 //definindo o produto.js como produto de rotas
-import produto from './routes/produtos.js'
-app.use('/produto',produto)
+import produto from "./routes/produtos.js";
+app.use("/produto", produto);
 
+import pessoa from "./routes/pessoa.js";
+app.use("/pessoa", pessoa);
 
 //   res.render("admin/index", { aluno });
 // });

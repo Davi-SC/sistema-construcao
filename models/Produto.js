@@ -23,5 +23,5 @@ const Produto = banco.sequelize.define("produtos", {
   },
 }); // definição da tabela criada
 
-//Produto.sync(); //Sincroniza com o banco de dados
+Produto.sync(); //Sincroniza com o banco de dados
 export default Produto;
