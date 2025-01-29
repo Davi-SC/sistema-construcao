@@ -43,6 +43,9 @@ app.use("/produto", produto);
 import pessoa from "./routes/pessoa.js";
 app.use("/pessoa", pessoa);
 
+import usuario from "./routes/usuarios.js";
+app.use("/usuario", usuario);
+
 //   res.render("admin/index", { aluno });
 // });
 

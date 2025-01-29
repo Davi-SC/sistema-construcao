@@ -1,7 +1,7 @@
-import express from 'express'
+import express from "express";
+const router = express.Router();
+import UsuarioController from "../controllers/UsuarioController.js";
 
-const router = express.Router()
-
-import UsuarioController from '../controllers/UsuarioController'
-
-export default router 
+router.get("/cadastro", UsuarioController.cadastrar);
+router.post("/salvar", UsuarioController.salvar);
+export default router;
