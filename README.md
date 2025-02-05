@@ -1,6 +1,6 @@
 # Sistema de estoque
 
-Trabalho da matéria de Programação Web 2. Curso de Análise e Desenvolvimento de Sistemas - IFMA
+Sistema construido no decorrer da disciplina de Programação Web 2. Curso de Análise e Desenvolvimento de Sistemas - IFMA
 
 ## Dependências
 
