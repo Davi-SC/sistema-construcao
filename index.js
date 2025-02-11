@@ -6,11 +6,29 @@ import handlebars from "express-handlebars";
 import Handlebars from "handlebars";
 import bodyParser from "body-parser";
 import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
+import session from "express-session";
+import flash from "connect-flash";
 
 // Pasta estatica
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.use(express.static(path.join(__dirname, "public")));
 
+//Configuração da sessão
+app.use(
+  session({
+    secret: "institutofederaldomaranhao",
+    resave: true,
+    saveUninitialized: false,
+  })
+);
+app.use(flash());
+
+app.use(function (req, res, next) {
+  //toda vez que se chama uma rota essa função será chamada
+  res.locals.sucess_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  next();
+});
 // visão
 app.engine(
   "handlebars",
