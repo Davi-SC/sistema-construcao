@@ -1,35 +1,41 @@
 import express from "express";
 const app = express();
-import path from "path";
-import { fileURLToPath } from "url";
+
 import handlebars from "express-handlebars";
 import Handlebars from "handlebars";
 import bodyParser from "body-parser";
+import path from "path";
+import { fileURLToPath } from "url";
 import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
 import session from "express-session";
 import flash from "connect-flash";
+import passport from "passport";
+import auth from "./config/autenticacao.js";
+auth(passport);
 
-// Pasta estatica
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.join(__dirname, "public")));
-
-//Configuração da sessão
+////////////////////////
+//CONFIGURAÇÕES
+////////////////////////
 app.use(
   session({
-    secret: "institutofederaldomaranhao",
+    secret: "analiseedesenvolvimentodesistemas",
     resave: true,
     saveUninitialized: false,
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 app.use(function (req, res, next) {
-  //toda vez que se chama uma rota essa função será chamada
-  res.locals.sucess_msg = req.flash("success_msg");
+  res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  res.locals.usuario = req.user || null;
   next();
 });
-// visão
+
+//CONFIGURAR O TEMPLATE PADRÃO
 app.engine(
   "handlebars",
   handlebars.engine({
@@ -39,120 +45,33 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
+//CONFIGURAR O BODY PARSER PARA ENVIAR DADOS
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Rotas
-app.get("/", function (req, res) {
-  var aluno = {
-    nome: "Fulaninho",
-    nota: 7.5,
-  };
+//Pasta de Arquivos Estásticos
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.join(__dirname, "public")));
 
-  res.render("admin/index", { aluno });
+////////////////////
+//ROTAS DO SISTEMA
+////////////////////
+app.get("/", (req, res) => {
+  res.redirect("/admin");
 });
 
-// agora usando o router, mantemos a rota principal
+import admin from "./routes/admin.js";
+app.use("/admin", admin);
 
-//definindo o produto.js como produto de rotas
-import produto from "./routes/produtos.js";
+import produto from "./routes/produto.js";
 app.use("/produto", produto);
 
 import pessoa from "./routes/pessoa.js";
 app.use("/pessoa", pessoa);
 
-import usuario from "./routes/usuarios.js";
+import usuario from "./routes/usuario.js";
 app.use("/usuario", usuario);
 
-//   res.render("admin/index", { aluno });
-// });
-
-// app.get("/contato", function (req, res) {
-//   res.render("admin/contato");
-// });
-
-// app.get("/cadastro", function (req, res) {
-//   res.render("produto/cadastro");
-// });
-
-// app.get("/produto", function (req, res) {
-//   const produtos = [
-//     {
-//       id: 22,
-//       descricao: "mouse",
-//       preco: 22,
-//       estoque: 20
-//     },
-//     {
-//       id: 21,
-//       descricao: "mouse",
-//       preco: 2,
-//       estoque: 20
-//     },
-//     {
-//       id: 22,
-//       descricao: "mouse",
-//       preco: 22,
-//       estoque: 20
-//     },
-//     {
-//       id: 22,
-//       descricao: "mouse",
-//       preco: 22,
-//       estoque: 20
-//     },
-//     {
-//       id: 22,
-//       descricao: "mouse",
-//       preco: 22,
-//       estoque: 20
-//     },
-//     {
-//       id: 22,
-//       descricao: "mouse",
-//       preco: 22,
-//       estoque: 20
-//     },
-//     {
-//       id: 22,
-//       descricao: "mouse",
-//       preco: 22,
-//       estoque: 20
-//     },
-//     {
-//       id: 22,
-//       descricao: "mouse",
-//       preco: 22,
-//       estoque: 20
-//     },
-//     {
-//       id: 22,
-//       descricao: "mouse",
-//       preco: 22,
-//       estoque: 20
-//     },
-//     {
-//       id: 22,
-//       descricao: "mouse",
-//       preco: 22,
-//       estoque: 20
-//     }
-//   ];
-//   res.render("produto/lista",{produtos:produtos});
-// });
-
-// app.post("/cadastro", function (req, res) {
-//   var produto = {
-//     descricao: req.body.descricao,
-//     estoque: req.body.estoque,
-//     preco: req.body.preco,
-//     status: 1,
-//     foto: "/img/semfoto.png",
-//   };
-//   res.render("produto/detalhe", { produto });
-// });
-
-// Servidor
-app.listen(3921, () =>
-  console.log("Servidor truando em http://localhost:3921")
+app.listen(3200, () =>
+  console.log("Servidor Rodando em http://localhost:3200")
 );
